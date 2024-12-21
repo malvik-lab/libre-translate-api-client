@@ -1,0 +1,42 @@
+{
+  "name": "malvik-lab/libre-translate-api-client",
+  "description": "A PHP client for interacting with LibreTranslate, a free and open-source translation API.",
+  "keywords": [
+    "libretranslate",
+    "translation",
+    "api-client",
+    "php",
+    "language-detection",
+    "open-source",
+    "machine-translation"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vittorio Malaspina",
+      "email": "vittorio.malaspina@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "MalvikLab\\LibreTranslateClient\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "^8.2",
+    "guzzlehttp/guzzle": "^7.9",
+    "rakit/validation": "^1.4",
+    "cuyz/valinor": "^1.14"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5",
+    "phpstan/phpstan": "^1.10"
+  },
+  "minimum-stability": "stable"
+}
