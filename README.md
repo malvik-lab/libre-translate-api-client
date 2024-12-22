@@ -89,7 +89,7 @@ Implementation
 
 // ...
 
-$response = $this->client->languages();
+$response = $client->languages();
 ```
 
 Output
