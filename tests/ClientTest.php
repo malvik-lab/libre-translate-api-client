@@ -21,6 +21,7 @@ use MalvikLab\LibreTranslateClient\DTO\TranslateRequestDTO;
 use MalvikLab\LibreTranslateClient\DTO\TranslateResponseDTO;
 use MalvikLab\LibreTranslateClient\DTO\FrontendSettingsResponseDTO;
 use MalvikLab\LibreTranslateClient\Enum\FormatEnum;
+use MalvikLab\LibreTranslateClient\DTO\DetectDTO;
 
 final class ClientTest extends TestCase
 {
@@ -79,7 +80,7 @@ final class ClientTest extends TestCase
      * @throws GuzzleException
      * @throws MappingError
      */
-    public function testTranslate(): void
+    public function testTranslateFromSelectedLanguage(): void
     {
         $request = new TranslateRequestDTO(
             'I soldi non fanno la felicità, figuratevi la miseria...',
@@ -91,6 +92,28 @@ final class ClientTest extends TestCase
         $response = $this->client->translate($request);
 
         $this->assertInstanceOf(TranslateResponseDTO::class, $response);
+        $this->assertNull($response->detectedLanguage);
+    }
+
+    /**
+     * @return void
+     * @throws GuzzleException
+     * @throws InvalidSource
+     * @throws MappingError
+     */
+    public function testTranslateFromDetectedLanguage(): void
+    {
+        $request = new TranslateRequestDTO(
+            'Morto un papa se ne fa un altro.',
+            'auto',
+            'en',
+            FormatEnum::TEXT,
+            3
+        );
+        $response = $this->client->translate($request);
+
+        $this->assertInstanceOf(TranslateResponseDTO::class, $response);
+        $this->assertInstanceOf(DetectDTO::class, $response->detectedLanguage);
     }
 
     /**

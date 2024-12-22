@@ -28,7 +28,7 @@ use MalvikLab\LibreTranslateClient\Makers\FrontendSettingsResponseMaker;
 class Client
 {
     private const NAME = 'LIBRE TRANSLATE API CLIENT';
-    private const VERSION = '1.0.0';
+    private const VERSION = '1.0.1';
     private HttpClient $httpClient;
 
     /**
